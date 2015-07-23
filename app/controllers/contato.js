@@ -2,6 +2,8 @@ module.exports = function(app) {
 	
 	var controller = {};
 	
+	var ID_CONTATO_INC =3;
+	 
 	var contatos = [  
 			  { _id: 1, 
 			    nome: 'Contato Exemplo 1',
@@ -36,6 +38,28 @@ module.exports = function(app) {
 			return contato._id != idContato;
 		});	
 		res.status(204).end();
+	};
+	
+	controller.salva = function(req, res) {
+		var contato = req.body;
+		contato = contato._id ? atualiza(contato) ? adiciona(contato);
+		res.json(contato);
+	};
+	
+	var adiciona = function(contatoNovo) {
+		contatoNovo._id = ++ID_CONTATO_INC;
+		contatos.push(contatoNovo);
+		return contatoNovo;
+	};
+	
+	var atualiza = function(contatoAlterar) {
+		contatos = contatos.map(function(contato) {
+			if (contato._id == contatoAlterar._id) {
+				contato = contatoAlterar;
+			}
+			return contato;
+		});
+		return contatoAlterar;
 	};
 	
 	return controller;

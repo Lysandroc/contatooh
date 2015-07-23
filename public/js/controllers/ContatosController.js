@@ -1,6 +1,6 @@
-angular.module('contatooh')
-.controller('ContatosController', 
-	function($scope, $resource) {
+angular
+.module('contatooh')
+.controller('ContatosController', function($scope, $resource) {
 		
 		$scope.filtro='';
 		$scope.contatos = [];

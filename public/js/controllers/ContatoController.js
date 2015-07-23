@@ -1,5 +1,6 @@
-angular.module('contatooh').controller('ContatoController',  
-	function($scope, $routeParams, $resource) {
+angular
+.module('contatooh')
+.controller('ContatoController', function($scope, $routeParams, $resource) {
 			
 		var Contato = $resource('/contatos/:id');
 		
@@ -18,23 +19,8 @@ angular.module('contatooh').controller('ContatoController',
 		}
 		
 		$scope.salva = function() {
-			
-			// var promise = Contato.save($scope.contato).$promise;
-			// promise.then(function(){
-			// 	$scope.mensagem = {
-			// 		texto: 'Salvo com sucesso.'
-			// 	};
-			// 	$scope.contato = new Contato();
-			// 	console.log('salvo');
-			// }, function(erro){
-			// 	$scope.mensagem = {
-			// 		texto: 'Nao foi possivel salvar.'
-			// 	};
-			// 	console.log(erro);
-			// });
-			
-			var promise = $scope.contato.$save();
-			promise.then(function(){
+			$scope.contato.$save()
+			.then(function(){
 				$scope.mensagem = {
 					texto: 'Salvo com sucesso.'
 				};
