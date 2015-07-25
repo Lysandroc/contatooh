@@ -1,14 +1,13 @@
 angular
 .module('contatooh')
-.controller('ContatosController', function($scope, $resource) {
+.controller('ContatosController', function($scope, Contato) {
 		
 		$scope.filtro='';
 		$scope.contatos = [];
 		$scope.mensagem = {texto: ''};
 		
 		$scope.buscaContato = function() {
-			var Contatos = $resource('/contatos/:id');
-			var promise = Contatos.query().$promise;
+			var promise = Contato.query().$promise;
 			promise.then(function(contatos) {
 				$scope.contatos = contatos;
 			}, function(erro) {
@@ -18,8 +17,7 @@ angular
 		
 		$scope.removeContato = function(contato) { 
 			console.log(contato);
-			var Contatos = $resource('/contatos/:id');
-			var promise = Contatos.delete({id: contato._id}).$promise;
+			var promise = Contato.delete({id: contato._id}).$promise;
 			promise.then($scope.buscaContato, function(erro) {
 				$scope.mensagem.texto='Nao foi possivel remover contato.' + erro;
 			});

@@ -2,7 +2,7 @@
 <p ng-show="mensagem.texto">
 	{{ mensagem.texto }}
 </p>
-<p ng-show="!!contato" class="alert alert-success"> Novo </p>
+<p ng-hide="!!contato._id" class="alert alert-success"> Novo </p>
 
 <form ng-submit="salva()">
 	<div class="form-group">

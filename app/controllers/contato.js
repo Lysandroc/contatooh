@@ -2,7 +2,7 @@ module.exports = function(app) {
 	
 	var controller = {};
 	
-	var ID_CONTATO_INC =3;
+	var ID_CONTATO_INC = 3;
 	 
 	var contatos = [  
 			  { _id: 1, 
@@ -20,6 +20,7 @@ module.exports = function(app) {
   	];
 		  
 	controller.listaContatos = function(req, res) {
+		console.log(contatos);
 		res.json(contatos);
 	};
 	
@@ -40,12 +41,6 @@ module.exports = function(app) {
 		res.status(204).end();
 	};
 	
-	controller.salva = function(req, res) {
-		var contato = req.body;
-		contato = contato._id ? atualiza(contato) ? adiciona(contato);
-		res.json(contato);
-	};
-	
 	var adiciona = function(contatoNovo) {
 		contatoNovo._id = ++ID_CONTATO_INC;
 		contatos.push(contatoNovo);
@@ -61,6 +56,13 @@ module.exports = function(app) {
 		});
 		return contatoAlterar;
 	};
+	
+	controller.salvaContato = function(req, res) {
+		var contato = req.body;
+		contato = contato._id ? atualiza(contato) : adiciona(contato);
+		res.json(contato);
+	};
+	
 	
 	return controller;
 };
