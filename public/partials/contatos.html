@@ -32,11 +32,13 @@
 		<tr>
 			<th>Nome</th>
 			<th>Email</th>
+			<th>Emergencia</th>
 			<th class="text-center">Acao</th>
 		</tr>
 		<tr ng-repeat="contato in contatos | filter: filtro">
 			<td><a ng-href="#/contato/{{ contato._id }}">{{ contato.nome}}</a></td>
 			<td> {{ contato.email}}</td>
+			<td> {{ contato.emergencia.nome }}</td>
 			<td class="text-center">
 				<button ng-click="removeContato(contato)" class="btn btn-warning">Remover</button>
 			</td>
