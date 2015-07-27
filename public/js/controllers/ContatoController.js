@@ -35,4 +35,8 @@ angular
 			console.log(erro);
 		});
 	};
+	
+	Contato.query(function(contatos){
+		$scope.contatos = contatos;
+	});
 });
