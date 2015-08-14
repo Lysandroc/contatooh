@@ -8,12 +8,21 @@
 		<link rel="stylesheet" href="ventor/bootstrap/dist/css/bootstrap-theme.css">
 	</head>
 	<body class="container">
+		
+		<% if(usuarioLogado.length >0) { %>
+		<div class="text-right">
+			<p>Logado como: <span id="usuario-logado"> <%= usuarioLogado %> </span></p>
+			<a href="/logout"> Logout </a>
+		</div>
+		<% } %>
+		
 		<div ng-view></div>
 		<script src="ventor/angular/angular.js"></script>
 		<script src="ventor/angular-route/angular-route.js"></script>
 		<script src="ventor/angular-resource/angular-resource.js"></script>
 		<script src="js/main.js"></script>
 		<script src="js/services/ContatoService.js"></script>
+		<script src="js/services/InterceptorService.js"></script>
 		<script src="js/controllers/ContatosController.js"></script>
 		<script src="js/controllers/ContatoController.js"></script>
 	</body>

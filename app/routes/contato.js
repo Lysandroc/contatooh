@@ -1,3 +1,13 @@
+function verificaAutenticacao(req, res, next) {
+		if(req.isAuthenticated()) {
+			console.log(' autorizado');
+			return next;
+		} else {
+			console.log('nao autorizado');
+			res.status(404).json('Nao autorizado!');
+		}
+}
+
 module.exports = function(app) {
 	
 	var controller = app.controllers.contato;
@@ -7,10 +17,12 @@ module.exports = function(app) {
 	//app.delete('/contatos/:id', controller.removeContato);
 	
 	app.route('/contatos')
-	.get(controller.listaContatos)
-	.post(controller.salvaContato);
+	.get(verificaAutenticacao, controller.listaContatos)
+	.post(verificaAutenticacao, controller.salvaContato);
 	
 	app.route('/contatos/:id')
-	.get(controller.obtemContato)
-	.delete(controller.removeContato);	
+	.get(verificaAutenticacao, controller.obtemContato)
+	.delete(verificaAutenticacao, controller.removeContato);	
+	
+	
 };
