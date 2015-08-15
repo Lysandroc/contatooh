@@ -4,7 +4,8 @@ var express = require('express')
   , bodyParser = require('body-parser')
   , session = require('express-session')
   , cookieParser = require('cookie-parser')
-  , passport = require('passport');
+  , passport = require('passport')
+  , helmet = require('helmet');
   
 module.exports = function() {
 	
@@ -27,12 +28,17 @@ module.exports = function() {
 	}));
 	app.use(passport.initialize());
 	app.use(passport.session());
-	
+	app.use(helmet());
+	app.disable('x-powered-by');
 	
 	expressLoad('models', {cwd: 'app'})
 		.then('controllers')
 		.then('routes')
 		.into(app);
-		
+	
+	app.get('*', function(req,res) {
+		res.status(404).render('404');
+	});	
+	
 	return app;	
 };

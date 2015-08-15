@@ -4,8 +4,12 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width">
 		<title>Document</title>
+		
+		<!-- build:css css/index.min.css  -->
 		<link rel="stylesheet" href="ventor/bootstrap/dist/css/bootstrap.css">
 		<link rel="stylesheet" href="ventor/bootstrap/dist/css/bootstrap-theme.css">
+		<!-- endbuild -->
+		
 	</head>
 	<body class="container">
 		
@@ -17,6 +21,8 @@
 		<% } %>
 		
 		<div ng-view></div>
+		
+		<!-- build:js js/index.min.js -->
 		<script src="ventor/angular/angular.js"></script>
 		<script src="ventor/angular-route/angular-route.js"></script>
 		<script src="ventor/angular-resource/angular-resource.js"></script>
@@ -25,6 +31,8 @@
 		<script src="js/services/InterceptorService.js"></script>
 		<script src="js/controllers/ContatosController.js"></script>
 		<script src="js/controllers/ContatoController.js"></script>
+		<!-- endbuild -->
+		
 	</body>
 </html>
 

@@ -1,3 +1,5 @@
+var sanitize = require('mongo-sanitize');
+
 module.exports = function(app) {
 	
 	var controller = {};
@@ -16,7 +18,7 @@ module.exports = function(app) {
 	};
 	
 	controller.obtemContato = function(req, res) {
-		var _id = req.params.id;
+		var _id = sanitize(req.params.id);
 		Contato.findById(_id).exec()
 		.then(
 			function(contato) {
