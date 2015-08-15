@@ -7,9 +7,9 @@ module.exports = function() {
 	var Usuario = mongoose.model('Usuario');
 	
 	passport.use(new GitHubStrategy( {
-		clientID: '',
-		clientSecret: '',
-		callbackUrl: '' 
+		clientID: '8450603cc2df9f219549',
+		clientSecret: 'b5ece746d1020ba117becc81e389d225c182b660',
+		callbackUrl: 'http://localhost:3000/auth/github/callback' 
 		}, function(acessToken, refreshToken, profile, done) {
 			Usuario.findOrCreate(
 				{ "login": profile.username },
@@ -26,12 +26,14 @@ module.exports = function() {
 	);
 	
 	passport.serializeUser(function(usuario, done) {
-	  done(null, usuario._id);
+		console.log('serialize usuario id'+usuario._id);
+	  	done(null, usuario._id);
 	});
 	 
 	passport.deserializeUser(function(id, done) {
 	  Usuario.findById(id).exec()
 	  .then(function(usuario) {
+		console.log('deserialize usuario'+usuario);
 	  	done(null, usuario);	
 	  });
 	});

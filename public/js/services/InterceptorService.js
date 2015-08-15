@@ -4,12 +4,10 @@ angular.module('contatooh')
     
     var interceptor = {
     	responseError: function(resposta) {
-    		console.log(resposta.status);
-            if (resposta.status == 401) {
+    		if (resposta.status == 401) {
     		  $location.path('/auth');
     		}
             return $q.reject(resposta);
-            
     	}
     }
 

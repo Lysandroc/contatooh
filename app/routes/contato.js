@@ -1,10 +1,10 @@
 function verificaAutenticacao(req, res, next) {
 		if(req.isAuthenticated()) {
 			console.log(' autorizado');
-			return next;
+			return next();
 		} else {
 			console.log('nao autorizado');
-			res.status(404).json('Nao autorizado!');
+			res.status(401).json('Nao autorizado!');
 		}
 }
 

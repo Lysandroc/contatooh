@@ -5,6 +5,7 @@ angular
 	var carrega = function() {
 		if ($routeParams.contatoId) {
 			var promise = Contato.get({id: $routeParams.contatoId}).$promise;
+			
 			promise.then(function(contato) {
 				$scope.contato = contato;
 			}, function(erro){
@@ -20,6 +21,7 @@ angular
 	carrega();
 	
 	$scope.salva = function() {
+		
 		$scope.contato.$save()
 		.then(function(){
 			$scope.mensagem = {
