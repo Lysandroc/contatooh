@@ -1,7 +1,7 @@
 describe('Cadastro de contatos', function() {
 	
 	beforeEach(function() {
-		browser.get('￼￼http://localhost:3000/#/contato');	
+		browser.get('http://localhost:3000/#/contato');	
 	});
 	
 	it('Deve cadastrar um contato', function() {
