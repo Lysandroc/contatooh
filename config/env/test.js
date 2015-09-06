@@ -3,7 +3,7 @@ module.exports = {
     db: 'mongodb://localhost/contatooh_test',
     sauceTestName: 'Contato E2E Testing',
     sauceUser: process.env.SAUCE_USERNAME,
-    sauceKey: process.env.SAUCE_ACESS_KEY,
+    sauceKey: process.env.SAUCE_ACCESS_KEY,
     travisJobNumber: process.env.TRAVIS_JOB_NUMBER,
     travisBuild: process.env.TRAVIS_BUILD_NUMBER,
     clientID: process.env.CLIENT_ID,
