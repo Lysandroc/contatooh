@@ -11,11 +11,10 @@ exports.config = {
 
   specs: ['../test/e2e/**/*Spec.js'],
   onPrepare: function() {
-    browser.driver.get('http://localhost:3000').then(function() {
-      browser.driver.findElement(by.id('entrar')).click()
-      browser.driver.findElement(by.id('login_field')).sendKeys(config.seleniumUser);
-      browser.driver.findElement(by.id('password')).sendKeys(config.seleniumUserPassword);
+      browser.driver.get('http://localhost:3000');
+      element(by.id('entrar')).click();
+      browser.driver.findElement(by.id('login_field')).sendKeys('lysandroc');
+      browser.driver.findElement(by.id('password')).sendKeys('mean.2016');
       browser.driver.findElement(by.name('commit')).click();
-    });
   }
 };
